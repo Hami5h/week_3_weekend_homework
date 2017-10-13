@@ -60,4 +60,10 @@ class Customer
     return film_array
   end
 
+  def buy_ticket(film)
+    if @funds >= film.price
+      @funds -= film.price
+    end
+    update
+  end
 end
