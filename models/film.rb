@@ -56,8 +56,12 @@ class Film
     WHERE tickets.film_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
-    customer_array = results.map {|customer| Customer.new(customer)}
-    return customer_array
+    @customer_array = results.map {|customer| Customer.new(customer)}
+    return @customer_array
+  end
+
+  def customer_count()
+    return @customer_array.count
   end
 
 end
