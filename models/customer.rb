@@ -66,4 +66,13 @@ class Customer
     end
     update
   end
+
+  def ticket_quantity()
+      sql = "SELECT tickets.* FROM tickets
+      WHERE customer_id = $1"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      quantity = results.map {|quantity| Customer.new(quantity)}
+      return quantity.count()
+  end
 end
